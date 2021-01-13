@@ -1,0 +1,27 @@
+/dts-v1/;
+
+/ {
+    compatible = "rockchip,rk3399";
+    fragment@0 {
+        status = "okay";
+        target-path = "/aliases";
+        __overlay__ {
+            pwm2 = "/pwm@ff1b0020";
+        };
+    };
+    fragment@1 {
+        target = <0xff1b0020>;
+        __overlay__ {
+            status = "okay";
+            #address-cells = <0x00000001>;
+            #size-cells = <0x00000000>;
+            pwm {
+                status = "okay";
+                reg = <0xff1b0020 0x10>;
+            };
+        };
+    };
+    __fixups__ {
+        pwm2 = "/fragment@1:target:0";
+    };
+};

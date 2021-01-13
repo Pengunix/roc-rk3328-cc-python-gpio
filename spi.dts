@@ -1,0 +1,29 @@
+/dts-v1/;
+
+/ {
+    compatible = "rockchip,rk3399";
+    fragment@0 {
+        status = "okay";
+        target-path = "/aliases";
+        __overlay__ {
+            spi0 = "/spi@ff190000";
+        };
+    };
+    fragment@1 {
+        target = <0xff190000>;
+        __overlay__ {
+            status = "okay";
+            #address-cells = <0x00000001>;
+            #size-cells = <0x00000000>;
+            spidev {
+                compatible = "spidev";
+                status = "okay";
+                reg = <0xff190000 0x1000>;
+                spi-max-frequency = <0x05000000>;
+            };
+        };
+    };
+    __fixups__ {
+        spi0 = "/fragment@1:target:0";
+    };
+};
