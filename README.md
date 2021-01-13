@@ -82,7 +82,7 @@ Here are the summary of the tests: ( see rk3328_gpio.png )
 These tests used Seeed Grove  starter kit LED, button, buzzer, Grove-LCD RGB Backlight V3.0 JHD1313M2, Analog Servo and Adafruit SSD1306 128x32 SPI OLED Display.
 1. uart test.
    This test will send uart1 tx to uart1 rx for loopback.
-   It sends ' ' to '~' to uart1 tx and receive ' ' to '~' from uart1 rx.
+   It sends 0 to 255 to uart1 tx and receive 0 to 255 from uart1 rx.
    Connect gpio pin 8 to pin 10.
 2. led test.
    This test will blink led 5 times. 
