@@ -1,7 +1,7 @@
 verbosity=1
 bootlogo=false
 overlay_prefix=rockchip
-rootdev=UUID=7077008c-18aa-4156-b4fb-1dc8497aad69
+rootdev=UUID=4a32442e-fd4d-436c-8a1f-ac8889967b3e
 rootfstype=ext4
 usbstoragequirks=0x2537:0x1066:u,0x2537:0x1068:u
 user_overlays=spi pwm uart
