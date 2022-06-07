@@ -476,7 +476,7 @@ def ssd1306_test():
 
 item = ""
 while item != 'q':
-    item = raw_input("-- select a test --\r\n1. uart test\r\n2. led test\r\n3. button test\r\n4. pwm led test\r\n5. i2c lcd test\r\n6. tongsong\r\n7. servo\r\n8. spi oled test\r\nq. quit\r\n")
+    item = input("-- select a test --\r\n1. uart test\r\n2. led test\r\n3. button test\r\n4. pwm led test\r\n5. i2c lcd test\r\n6. tongsong\r\n7. servo\r\n8. spi oled test\r\nq. quit\r\n")
     if item == '1':
         uart_test(port)
     elif item == '2':
