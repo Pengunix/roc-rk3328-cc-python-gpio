@@ -38,7 +38,7 @@ def uart_test(port):
         ser.write(s.format(i))
         time.sleep(0.05)
         rcv = readLine(ser)
-        print rcv
+        print(rcv)
 
     ser.close()
 
@@ -64,7 +64,7 @@ def setpin(pinnum, value):
 
 def getpin(pinnum):
     with open('/sys/class/gpio/gpio' + str(pinnum) + '/value', 'r') as f:
-        value = f.read() 
+        value = f.read()
         return int(value)
 
 def closepin(pinnum):
@@ -85,7 +85,6 @@ def pwm_stop():
 
 def pwm_close():
     os.system('sudo echo 0 > /sys/class/pwm/pwmchip0/unexport')
- 
 def pwm_freq(freq):
     global pwm_period
     pwm_period = 1000000000.0 / freq
@@ -105,7 +104,7 @@ def led_test():
     closepin(led)
 
 def button_test():
-    print "Push button 10 times.\r\n"
+    print("Push button 10 times.\r\n")
     initpin(led, 'out')
     initpin(switch, 'in')
     old_state = 0
@@ -415,7 +414,6 @@ def oledprintf( ch ):
               set_page_addr( 0, 1 )
           else:
               set_page_addr( 2, 3 )
-          
           setpin(led, 1)
           spi.writebytes( mychar )
           start_col += 7
@@ -434,20 +432,17 @@ def oledascii():
             for i in range(12):
                 mychar[i] = font7x14[tmp1]
                 tmp1 += 1
-            
             end_col = start_col + 5
             set_col_addr( start_col, end_col )
             if j < 16:
                 set_page_addr( 0, 1 )
             else:
                 set_page_addr( 2, 3 )
-            
             setpin(led, 1)
             spi.writebytes( mychar )
             start_col += 7
             if start_col >= 112:
                 start_col = 0
-        
         time.sleep( 2 )
         clearDisplay()
 
@@ -462,12 +457,11 @@ def ssd1306_test():
     set_horizontal_mode()
     set_col_addr( 0, 127 )
     set_page_addr( 0, 3 )
-  
     setpin(led, 1)
     for j in range(4):
         i = 0
         while i < 128:
-	    myData = [0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81]
+            myData = [0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81]
             spi.writebytes( myData )
             i=i+8
 
@@ -500,5 +494,5 @@ while item != 'q':
     elif item == '8':
         ssd1306_test()
     elif item == 'q':
-        print "Goodbye!"
+        print("Goodbye!")
         break
